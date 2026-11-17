@@ -1,0 +1,155 @@
+
+Merging object attributes
+
+
+Discarded input sections
+
+ .text          0x00000000        0x0 /tmp/ccSAtl6P.o
+ .data          0x00000000        0x0 /tmp/ccSAtl6P.o
+ .bss           0x00000000        0x0 /tmp/ccSAtl6P.o
+ .comment       0x00000000       0x1f /tmp/ccSAtl6P.o
+ .text          0x00000000        0x0 /tmp/ccNPWzgt.o
+ .data          0x00000000        0x0 /tmp/ccNPWzgt.o
+ .bss           0x00000000        0x0 /tmp/ccNPWzgt.o
+ .comment       0x00000000       0x1f /tmp/ccNPWzgt.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00080000         xr
+RAM              0x20000000         0x00014000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD /tmp/ccSAtl6P.o
+LOAD /tmp/ccNPWzgt.o
+                0x20014000                        _estack = (ORIGIN (RAM) + LENGTH (RAM))
+
+.isr_vector     0x08000000      0x240
+                0x08000000                        . = ALIGN (0x200)
+ *(.isr_vector)
+ .isr_vector    0x08000000      0x240 /tmp/ccSAtl6P.o
+                0x08000000                vector_table
+
+.text           0x08000240       0xbc
+                0x08000240                        . = ALIGN (0x4)
+ *(.text)
+ *(.text.*)
+ .text.Default_Handler
+                0x08000240        0x4 /tmp/ccSAtl6P.o
+                0x08000240                DebugMon_Handler
+                0x08000240                HardFault_Handler
+                0x08000240                SysTick_Handler
+                0x08000240                PendSV_Handler
+                0x08000240                NMI_Handler
+                0x08000240                UsageFault_Handler
+                0x08000240                Default_Handler
+                0x08000240                MemManage_Handler
+                0x08000240                SVC_Handler
+                0x08000240                BusFault_Handler
+ .text.Reset_Handler
+                0x08000244       0x44 /tmp/ccSAtl6P.o
+                0x08000244                Reset_Handler
+ .text.startup.main
+                0x08000288       0x74 /tmp/ccNPWzgt.o
+                0x08000288                main
+ *(.rodata)
+ *(.rodata.*)
+                0x080002fc                        . = ALIGN (0x4)
+
+.glue_7         0x080002fc        0x0
+ .glue_7        0x080002fc        0x0 linker stubs
+
+.glue_7t        0x080002fc        0x0
+ .glue_7t       0x080002fc        0x0 linker stubs
+
+.vfp11_veneer   0x080002fc        0x0
+ .vfp11_veneer  0x080002fc        0x0 linker stubs
+
+.v4_bx          0x080002fc        0x0
+ .v4_bx         0x080002fc        0x0 linker stubs
+
+.iplt           0x080002fc        0x0
+ .iplt          0x080002fc        0x0 /tmp/ccSAtl6P.o
+
+.rel.dyn        0x080002fc        0x0
+ .rel.iplt      0x080002fc        0x0 /tmp/ccSAtl6P.o
+
+.ARM.exidx
+ *(.ARM.exidx*)
+
+.data           0x20000000        0x0 load address 0x080002fc
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _sdata = .
+ *(.data)
+ *(.data.*)
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _edata = .
+                0x080002fc                        _sidata = LOADADDR (.data)
+
+.igot.plt       0x20000000        0x0 load address 0x080002fc
+ .igot.plt      0x20000000        0x0 /tmp/ccSAtl6P.o
+
+.bss            0x20000000        0x0 load address 0x080002fc
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _sbss = .
+ *(.bss)
+ *(.bss.*)
+ *(COMMON)
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _ebss = .
+
+/DISCARD/
+ *(.comment)
+ *(.note*)
+                0x00000001                        ASSERT ((_ebss <= (ORIGIN (RAM) + LENGTH (RAM))), SRAM overflow)
+OUTPUT(build/kernel.elf elf32-littlearm)
+LOAD linker stubs
+
+.ARM.attributes
+                0x00000000       0x2e
+ .ARM.attributes
+                0x00000000       0x2e /tmp/ccSAtl6P.o
+ .ARM.attributes
+                0x0000002e       0x2e /tmp/ccNPWzgt.o
+
+.debug_info     0x00000000      0x21e
+ .debug_info    0x00000000      0x15a /tmp/ccSAtl6P.o
+ .debug_info    0x0000015a       0xc4 /tmp/ccNPWzgt.o
+
+.debug_abbrev   0x00000000      0x17b
+ .debug_abbrev  0x00000000       0xf5 /tmp/ccSAtl6P.o
+ .debug_abbrev  0x000000f5       0x86 /tmp/ccNPWzgt.o
+
+.debug_loclists
+                0x00000000       0x6b
+ .debug_loclists
+                0x00000000       0x6b /tmp/ccSAtl6P.o
+
+.debug_aranges  0x00000000       0x48
+ .debug_aranges
+                0x00000000       0x28 /tmp/ccSAtl6P.o
+ .debug_aranges
+                0x00000028       0x20 /tmp/ccNPWzgt.o
+
+.debug_rnglists
+                0x00000000       0x3b
+ .debug_rnglists
+                0x00000000       0x19 /tmp/ccSAtl6P.o
+ .debug_rnglists
+                0x00000019       0x22 /tmp/ccNPWzgt.o
+
+.debug_line     0x00000000      0x1e4
+ .debug_line    0x00000000       0xe5 /tmp/ccSAtl6P.o
+ .debug_line    0x000000e5       0xff /tmp/ccNPWzgt.o
+
+.debug_str      0x00000000      0x177
+ .debug_str     0x00000000      0x177 /tmp/ccSAtl6P.o
+                                0x1a4 (size before relaxing)
+ .debug_str     0x00000177        0x0 /tmp/ccNPWzgt.o
+                                0x142 (size before relaxing)
+
+.debug_frame    0x00000000       0x5c
+ .debug_frame   0x00000000       0x38 /tmp/ccSAtl6P.o
+ .debug_frame   0x00000038       0x24 /tmp/ccNPWzgt.o
