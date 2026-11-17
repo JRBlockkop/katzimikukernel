@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include "systick.h"
 
 #define REG32(addr) (*(volatile uint32_t *)(addr))
 
@@ -35,16 +36,18 @@ int main(void)
     // No Pull
     GPIOA_PUPDR &= ~(3U << 10);
 
+    systick_init();
+
     while (1)
     {
         // LED ON
         GPIOA_BSRR = PA5;
 
-        delay();
+        delay_ms(500);
 
         // LED OFF
         GPIOA_BSRR = (PA5 << 16);
 
-        delay();
+        delay_ms(500);
     }
 }

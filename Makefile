@@ -20,7 +20,7 @@ all:
 	    -Wl,--build-id=none \
 	    -T linker.ld \
 	    -Wl,-Map=build/kernel.map \
-	    startup.c main.c \
+	    startup.c main.c src/systick.c\
 	    -o build/kernel.elf
 
 	arm-none-eabi-objcopy \
